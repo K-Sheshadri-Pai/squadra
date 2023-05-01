@@ -13,7 +13,7 @@ const FilterModal = (props) => {
         <Dialog open={props.open} onClose={props.handleFilterClose} >
           <Card sx={{ minWidth: 275 }}>
               <CardContent>
-                <FilterForm handleFilterClose={props.handleFilterClose} data={props.data} setData={props.setData} />
+                <FilterForm  setFilterQuery={props.setFilterQuery} isFilter={props.isFilter} setIsFilter={props.setIsFilter} handleFilterClose={props.handleFilterClose} data={props.data} setData={props.setData} />
               </CardContent>
           </Card>
         </Dialog>

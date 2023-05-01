@@ -14,6 +14,8 @@ export default function Role() {
 
     // table data
     const [data, setData] = useState([]);
+    const [isFilter, setIsFilter] = useState(false);
+    const [filterQuery, setFilterQuery] = useState();
 
     // page state for pagination
     const [page, setPage] = React.useState(1);
@@ -57,7 +59,7 @@ export default function Role() {
 
         {   
             filterOpen && 
-            <FilterModal open={filterOpen} handleFilterClose={handleFilterClose} data={data} setData={setData} />
+            <FilterModal setFilterQuery={setFilterQuery} isFilter={isFilter} setIsFilter={setIsFilter} open={filterOpen} handleFilterClose={handleFilterClose} data={data} setData={setData} />
         } 
         
         
@@ -80,6 +82,9 @@ export default function Role() {
         {/* Table component */}
 
         <TableData 
+            filterQuery={filterQuery}
+            isFilter={isFilter}
+            setIsFilter={setIsFilter}
             handleOpen = {handleOpen} 
             handleClose = {handleClose} 
             page={page} 

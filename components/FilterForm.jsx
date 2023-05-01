@@ -24,7 +24,9 @@ const FilterForm = (props) => {
         //     alert('Please fill any one field')
         // }
 
-        
+            props.setIsFilter(true)
+            props.setFilterQuery({rname,orgname,rid,cdate,rstate})
+
             axios.get(`${process.env.BASE_URL}/roles/new/filter?roleName=${rname}&roleId=${rid}&orgName=${orgname}&roleState=${rstate}&createdDate=${cdate?dayjs(cdate).format('YYYY-MM-DD').toString():""}&pageNo=0&pageSize=4`)
             
             .then((response) => {

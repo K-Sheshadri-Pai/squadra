@@ -11,6 +11,7 @@ import Image from "next/image";
 import edit from "../images/edit.png";
 import deletebtn from "../images/deletebtn.png";
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const useStyles = makeStyles({
   coloredRow: {
@@ -50,9 +51,14 @@ export default function TableData(props) {
   // get request with pagination
 
   function getData(page){
-    fetch(`${process.env.BASE_URL}/roles/paging?pageSize=4&pageNo=${page-1}`)
-        .then((res) => res.json())
-        .then((data) => setData(data.content));
+    console.log(props.isFilter)
+    if(props.isFilter){
+      axios.get(`${process.env.BASE_URL}/roles/new/filter?roleName=${props.filterQuery.rname}&roleId=${props.filterQuery.rid}&orgName=${props.filterQuery.orgname}&roleState=${props.filterQuery.rstate}&createdDate=${props.filterQuery.cdate?dayjs(props.filterQuery.cdate).format('YYYY-MM-DD').toString():""}&pageNo=${page-1}&pageSize=4`).then((res) => setData(res.data.content))
+    }else{
+      fetch(`${process.env.BASE_URL}/roles/paging?pageSize=4&pageNo=${page-1}`)
+          .then((res) => res.json())
+          .then((data) => setData(data.content));
+    }
   }
 
   // delete request with pagination
