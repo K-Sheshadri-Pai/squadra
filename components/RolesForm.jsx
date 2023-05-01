@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField , Button, Grid , Typography, Divider} from '@mui/material';
+import { TextField , Button, Grid , Typography, Divider , InputLabel} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -186,9 +186,9 @@ const RoleForm = (props) => {
     <Grid container sx={{ margin: 2 }}>
         
         <Grid item xs={3} sx={{ marginTop: 2 }}>
+        <InputLabel sx={{marginBottom : 1}}>Role Name</InputLabel>
             <TextField
                 variant="outlined"
-                label="Role Name"
                 sx={{ width : 130 }}
                 value={roleName}
                 onChange={e=>{
@@ -199,9 +199,9 @@ const RoleForm = (props) => {
         </Grid>
 
         <Grid item xs={5} sx={{ marginTop: 2 }}>
+        <InputLabel sx={{marginBottom : 1}}>Organisation Name</InputLabel>
             <TextField
                 variant="outlined"
-                label="Organisation Name"
                 value={organizationName}
                 onChange={e=>{
                   setOrganizationName(e.target.value)
@@ -212,11 +212,10 @@ const RoleForm = (props) => {
         </Grid>
 
         <Grid item xs={4} sx={{ marginTop: 2 }}>
-    
+        <InputLabel sx={{marginBottom : 1}}>Created Date</InputLabel>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
                   
                   <DatePicker
-                    label="Created Date *"
                     value={selectedDate}
                     onChange={(newValue) => setSelectedDate(newValue)}
                     disablePast={true}
@@ -229,12 +228,12 @@ const RoleForm = (props) => {
         
 
         <Grid item xs={3} sx={{ marginTop: 2 }}>
+        <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
             <Select
                 value={roleState}
                 onChange={e=>{
                   setRoleState(e.target.value)
                 }}
-                label="Role State"
                 variant="outlined"
                 sx={{ width: 130 }}
                 required
@@ -245,9 +244,9 @@ const RoleForm = (props) => {
         </Grid>
 
         <Grid item xs={7} sx={{ marginTop: 2 }}>
+        <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
             <TextField
                 variant="outlined"
-                label="Role Id"
                 value={roleId}
                 onChange={handleroleId}
                 error={!isvalidId}

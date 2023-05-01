@@ -13,8 +13,8 @@ const Sidebar = () => {
       <div
         style={{
           border: "3px solid rgba(77, 71, 195, 0.08)",
-          width: 282,
-          height: 570,
+          width: 288,
+          height: 575,
         }}
       >
         <Box sx={{ width: 282 }} role="presentation">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button, Grid , Typography, Divider} from '@mui/material';
+import { TextField, Button, Grid , Typography, Divider , InputLabel} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -87,9 +87,9 @@ const FilterForm = (props) => {
             <Grid container sx={{ margin: 2 }}>
                 
                 <Grid item xs={3} sx={{ marginTop: 2 }}>
+                    <InputLabel sx={{marginBottom : 1}}>Role Name</InputLabel>
                     <TextField
                         variant="outlined"
-                        label="Role Name"
                         sx={{ width : 130 }}
                         value={rname}
                         onChange={(e) => setRname(e.target.value)}
@@ -98,9 +98,9 @@ const FilterForm = (props) => {
                 </Grid>
 
                 <Grid item xs={5} sx={{ marginTop: 2 }}>
+                    <InputLabel sx={{marginBottom : 1}}>Organisation Name</InputLabel>
                     <TextField
                         variant="outlined"
-                        label="Organisation Name"
                         value={orgname}
                         onChange={(e) => setOrgname(e.target.value)}
                         sx={{ width : 225 }}
@@ -108,11 +108,11 @@ const FilterForm = (props) => {
                 </Grid>
 
                 <Grid item xs={4} sx={{ marginTop: 2 }}>
-
+                <InputLabel sx={{marginBottom : 1}}>Created Date</InputLabel>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  
+
                   <DatePicker
-                    label="Created Date"
+                    
                     value={cdate}
                     onChange={(newValue) => setCdate(newValue)}
                     disablePast={true}
@@ -125,8 +125,8 @@ const FilterForm = (props) => {
                 </Grid>
 
                 <Grid item xs={3} sx={{ marginTop: 2 }}>
+                <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
                     <Select
-                        label="Role State"
                         value={rstate}
                         onChange={e=>{
                             setRstate(e.target.value)
@@ -140,10 +140,10 @@ const FilterForm = (props) => {
                     </Select>
                 </Grid>
 
-                <Grid item xs={7} sx={{ marginTop: 2 }}>
+                <Grid item xs={7} sx={{ marginTop : 2 }}>
+                <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
                     <TextField
                         variant="outlined"
-                        label="Role Id"
                         value={rid}
                         onChange={(e) => setRid(e.target.value)}
                     />

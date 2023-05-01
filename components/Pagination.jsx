@@ -16,7 +16,7 @@ export default function PaginationControl(props) {
             <Grid item xs={3}>
                 <Typography>Page : {props.page}</Typography>
             </Grid>
-            <Grid item xs={9} >
+            <Grid item xs={8} sx={{marginLeft:6}}>
                 <Pagination count={6} page={props.page} color="primary" onChange={handleChange} />
             </Grid>
         </Grid>

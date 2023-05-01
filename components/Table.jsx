@@ -75,7 +75,7 @@ export default function TableData(props) {
   const classes = useStyles();
 
   if(data.length === 0) {
-    return <h2 style={{marginLeft : "24rem" }}>No data available</h2>;
+    return <h5 style={{marginLeft : "24rem" }}> No data available </h5>;
   }
 
   return (
