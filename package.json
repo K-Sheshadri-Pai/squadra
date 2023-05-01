@@ -1,0 +1,36 @@
+{
+  "name": "fe-assessment",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db": "json-server --watch db.json --port 8080"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/pickers": "^3.3.10",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.128",
+    "@mui/material": "^5.12.2",
+    "@mui/x-date-pickers": "^6.2.1",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
+    "dayjs": "^1.11.7",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "mui-label-divider": "^4.0.21",
+    "next": "13.3.1",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "18.2.0",
+    "react-top-loading-bar": "^2.3.1"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}

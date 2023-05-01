@@ -1,0 +1,36 @@
+{
+  "roles": [
+    {
+      "roleName": "john",
+      "orgName": "dell",
+      "createdDate": "26/11/2009",
+      "roleState": true,
+      "roleId": "MNR678",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "roleName": "yang",
+      "orgName": "dell",
+      "createdDate": "26/11/2011",
+      "roleState": true,
+      "roleId": "XYZ324"
+    },
+    {
+      "roleName": "sam",
+      "orgName": "dell",
+      "createdDate": "26/11/2020",
+      "roleState": true,
+      "roleId": "ABC126",
+      "id": 3
+    },
+    {
+      "roleName": "peter",
+      "orgName": "dell",
+      "createdDate": "03/07/2001",
+      "roleState": true,
+      "roleId": "PQR456",
+      "id": 4
+    }
+  ]
+}
