@@ -52,7 +52,7 @@ export default function Role() {
 
         {
             open && 
-            <DialogModal open={open} handleClose={handleClose} itemId = ''/>
+            <DialogModal open={open} handleClose={handleClose} itemId = '' />
         }
  
         {/* Filter modal open */}
@@ -63,21 +63,21 @@ export default function Role() {
         } 
         
         
-        <Grid container spacing={1} sx={{marginBottom:"90px"}}>
+        <Grid container spacing={1} sx={{marginBottom:"30px"}}>
             <Grid item xs={9}>
                 <div className={styles.rolesdiv}>Roles</div>
             </Grid>
             <Grid item xs={1}>
-                <Button sx={{marginTop:4, backgroundColor: "#4D47C3"}} variant="contained" onClick={handleOpen}>Add</Button>
+                <Button sx={{marginTop:3, backgroundColor: "#4D47C3"}} variant="contained" onClick={handleOpen}>Add</Button>
             </Grid>
             <Grid item xs={2}>
-                <Button sx={{marginTop:4, backgroundColor: "#4D47C3"}} variant="contained" onClick={handleFilterOpen}>
+                <Button sx={{marginTop:3, backgroundColor: "#4D47C3"}} variant="contained" onClick={handleFilterOpen}>
                     <Image src={Filter} alt="logo" width="40px" height="42px" /> &nbsp; Filters
                 </Button>
             </Grid>
         </Grid>
 
-        <hr style={{position:"absolute", width: "1012px",height: "0px",left: "355px",top: "160px",border: "1px solid #CACACA"}}/>
+        <hr style={{position:"absolute", width: "1012px",height: "0px",left: "355px",top: "143px",border: "1px solid #CACACA"}}/>
 
         {/* Table component */}
 
