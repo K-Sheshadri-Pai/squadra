@@ -16,30 +16,24 @@ const FilterForm = (props) => {
     const [cdate, setCdate] = useState( );
     const [rstate, setRstate] = useState('');
 
-    // On Clicking filter
-
     async function handleFilter() {
 
-        // if(rname === ''  orgname === '' && rid === '' && cdate === '' && rstate === ''){
-        //     alert('Please fill any one field')
-        // }
+        props.setIsFilter(true)
+        props.setFilterQuery({rname,orgname,rid,cdate,rstate})
 
-            props.setIsFilter(true)
-            props.setFilterQuery({rname,orgname,rid,cdate,rstate})
+        axios.get(`${process.env.BASE_URL}/roles/new/filter?roleName=${rname}&roleId=${rid}&orgName=${orgname}&roleState=${rstate}&createdDate=${cdate?dayjs(cdate).format('YYYY-MM-DD').toString():""}&pageNo=0&pageSize=4`)
+        
+        .then((response) => {
+            props.setData(response.data.content);
+            props.handleFilterClose();
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 
-            axios.get(`${process.env.BASE_URL}/roles/new/filter?roleName=${rname}&roleId=${rid}&orgName=${orgname}&roleState=${rstate}&createdDate=${cdate?dayjs(cdate).format('YYYY-MM-DD').toString():""}&pageNo=0&pageSize=4`)
-            
-            .then((response) => {
-                console.log(response)
-                props.setData(response.data.content);
-                props.handleFilterClose();
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-        }
+    }
     
-    // Clear Filter
+    
     function handleClear() {
         setRname("");
         setOrgname("");
@@ -108,24 +102,24 @@ const FilterForm = (props) => {
                 </Grid>
 
                 <Grid item xs={4} sx={{ marginTop: 2 }}>
-                <InputLabel sx={{marginBottom : 1}}>Created Date</InputLabel>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <InputLabel sx={{marginBottom : 1}}>Created Date</InputLabel>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                  <DatePicker
-                    
-                    value={cdate}
-                    onChange={(newValue) => setCdate(newValue)}
-                    disablePast={true}
-                    format="DD-MM-YYYY"
-                    sx={{ width: 158 }}
-                  />
+                    <DatePicker
+                        
+                        value={cdate}
+                        onChange={(newValue) => setCdate(newValue)}
+                        disablePast={true}
+                        format="DD-MM-YYYY"
+                        sx={{ width: 158 }}
+                    />
 
-                </LocalizationProvider>
+                    </LocalizationProvider>
 
                 </Grid>
 
                 <Grid item xs={3} sx={{ marginTop: 2 }}>
-                <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
+                    <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
                     <Select
                         value={rstate}
                         onChange={e=>{
@@ -141,7 +135,7 @@ const FilterForm = (props) => {
                 </Grid>
 
                 <Grid item xs={7} sx={{ marginTop : 2 }}>
-                <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
+                    <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
                     <TextField
                         variant="outlined"
                         value={rid}

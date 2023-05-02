@@ -12,21 +12,20 @@ import { Paper , BottomNavigation } from '@mui/material';
 
 export default function Role() {
 
-    // table data
+    // table data being displayed
     const [data, setData] = useState([]);
+
     const [isFilter, setIsFilter] = useState(false);
     const [filterQuery, setFilterQuery] = useState();
 
-    // page state for pagination
     const [page, setPage] = React.useState(1);
 
-    // add modal open
+    
     const [open, setOpen] = useState(false);
 
-    // filter modal open 
+    
     const [filterOpen, setFilterOpen] = useState(false);
 
-    // handle open and close of add modal
 
     const handleOpen = () => {
         setOpen(true);
@@ -34,8 +33,6 @@ export default function Role() {
     const handleClose = () => {
         setOpen(false);
     };
-
-    // handle open and close of filter modal
 
     function handleFilterOpen() {
         setFilterOpen(true);
@@ -54,8 +51,6 @@ export default function Role() {
             open && 
             <DialogModal open={open} handleClose={handleClose} itemId = '' />
         }
- 
-        {/* Filter modal open */}
 
         {   
             filterOpen && 

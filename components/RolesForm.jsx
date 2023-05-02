@@ -11,20 +11,19 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 
 const RoleForm = (props) => {
 
-  // role form fields
   const [roleName, setRoleName] = useState('');
   const [organizationName, setOrganizationName] = useState('');
   const [roleId, setRoleId] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
   const [roleState, setRoleState] = useState('');
 
-  // is it update or add to control modal
+  // update mode on
   const [isUpdateState, setIsUpdateState] = useState(false);
 
-  // which item is getting updated 
+  // item being updated
   const [isUpdateId, setIsUpdateId] = useState('');
 
-  // role id valid invalid state
+  // role id valid or invalid
   const [isvalidId, setisvalidId] = useState(true);
 
 
@@ -68,8 +67,6 @@ const RoleForm = (props) => {
   }
 
 
-  // update request
-
    async function putItemData(roleId) {
 
     const res = await fetch(`${process.env.BASE_URL}/roles/${roleId}`, {
@@ -111,19 +108,18 @@ const RoleForm = (props) => {
   }
 
 
-  // get item by id for update fields
   function getItemData(id){
     fetch(`${process.env.BASE_URL}/roles/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-        setRoleName(data.roleName);
-        setOrganizationName(data.orgName);
-        setSelectedDate(dayjs(new Date(data.createdDate)));
-        setRoleState(data.roleState);
-        setRoleId(data.roleId);
-        setIsUpdateState(true);
-        setIsUpdateId(data.roleId);
-        });
+    .then((res) => res.json())
+    .then((data) => {
+      setRoleName(data.roleName);
+      setOrganizationName(data.orgName);
+      setSelectedDate(dayjs(new Date(data.createdDate)));
+      setRoleState(data.roleState);
+      setRoleId(data.roleId);
+      setIsUpdateState(true);
+      setIsUpdateId(data.roleId);
+    });
   }
 
   useEffect(() => {
@@ -134,13 +130,14 @@ const RoleForm = (props) => {
     
   }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
 
-    if (!isUpdateState && isvalidId)
-        postData();
-    if (isUpdateState && isvalidId)
-        putItemData(isUpdateId)
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!isUpdateState && isvalidId)
+            postData();
+        if (isUpdateState && isvalidId)
+            putItemData(isUpdateId)
     };
 
     // test whether role id is valid

@@ -5,7 +5,6 @@ import { Grid } from "@mui/material";
 
 export default function PaginationControl(props) {
  
-  // handle page number
   const handleChange = (event,value) => {
     props.setPage(value);
   };
@@ -14,7 +13,9 @@ export default function PaginationControl(props) {
     <>
         <Grid container sx={{marginLeft:8}}>
             <Grid item xs={3}>
-                <Typography>Page : {props.page}</Typography>
+                <Typography>
+                  Page : {props.page}
+                </Typography>
             </Grid>
             <Grid item xs={8} sx={{marginLeft:6}}>
                 <Pagination 

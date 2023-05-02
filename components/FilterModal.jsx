@@ -4,8 +4,6 @@ import FilterForm from '../components/FilterForm'
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
 
-// this modal is just for filter
-
 const FilterModal = (props) => {
 
   return (

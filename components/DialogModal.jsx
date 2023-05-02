@@ -12,7 +12,10 @@ const DialogModal = (props) => {
     <Dialog open={props.open} onClose={props.handleClose}>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-          <RoleForm handleClose={props.handleClose} itemId = {props.itemId}/>
+          <RoleForm 
+            handleClose={props.handleClose} 
+            itemId = {props.itemId}
+          />
         </CardContent>
       </Card>
     </Dialog>

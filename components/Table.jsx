@@ -13,7 +13,6 @@ import axios from 'axios';
 
 export default function TableData(props) {
 
-  // table data to be displayed
   const data = props.data;
   const setData = props.setData;
 
@@ -33,30 +32,24 @@ export default function TableData(props) {
 
   const [updateItemId, setUpdateItemId] = useState('');
 
-  // calling get request providing page no.
-
   useEffect(() => {
     getData(props.page);
   }, [props.page]);
 
-  // get request with pagination
 
-  function getData(page){
-    console.log(props.isFilter)
-    if(props.isFilter){
+  function getData(page) {
+    if(props.isFilter) {
       axios.get(`${process.env.BASE_URL}/roles/new/filter?roleName=${props.filterQuery.rname}&roleId=${props.filterQuery.rid}&orgName=${props.filterQuery.orgname}&roleState=${props.filterQuery.rstate}&createdDate=${props.filterQuery.cdate?dayjs(props.filterQuery.cdate).format('YYYY-MM-DD').toString():""}&pageNo=${page-1}&pageSize=4`)
       .then((res) => setData(res.data.content))
-    }else{
+    }else {
       fetch(`${process.env.BASE_URL}/roles/paging?pageSize=4&pageNo=${page-1}`)
           .then((res) => res.json())
           .then((data) => setData(data.content));
     }
   }
 
-  // delete request with pagination
 
   async function deleteData(id) {
-    console.log(id)
      await fetch(`${process.env.BASE_URL}/roles/${id}`, {
       method: 'DELETE'
     })
@@ -66,7 +59,7 @@ export default function TableData(props) {
 
 
   if(data.length === 0) {
-    return <h5 style={{marginLeft : "24rem" }}> No data available </h5>;
+    return <h5 style={{marginLeft : "24rem" , marginTop : "5rem"}}> No data available </h5>;
   }
 
   return (
