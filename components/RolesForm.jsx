@@ -25,6 +25,9 @@ const RoleForm = (props) => {
 
   // role id valid or invalid
   const [isvalidId, setisvalidId] = useState(true);
+  const [isvalidRoleName, setisvalidRoleName] = useState(true);
+  const [isvalidOrgName, setisvalidOrgName] = useState(true);
+
 
 
   async function postData() {
@@ -134,9 +137,9 @@ const RoleForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!isUpdateState && isvalidId)
+        if (!isUpdateState && isvalidId && isvalidRoleName && isvalidOrgName)
             postData();
-        if (isUpdateState && isvalidId)
+        if (isUpdateState && isvalidId && isvalidRoleName && isvalidOrgName)
             putItemData(isUpdateId)
     };
 
@@ -147,6 +150,18 @@ const RoleForm = (props) => {
         const reg = new RegExp("^[A-Z]{3}[0-9]{3}$");
         setisvalidId(reg.test(e.target.value));
     }
+
+    const handleRoleName = (e) =>{
+      setRoleName(e.target.value)
+      const reg = new RegExp("^([a-zA-Z_$][a-zA-Z\\d_$]*)$");
+      setisvalidRoleName(reg.test(e.target.value));
+    }
+
+    const handleOrgName = (e) =>{
+      setOrganizationName(e.target.value)
+      const reg = new RegExp("^([a-zA-Z_$][a-zA-Z\\d_$]*)$");
+      setisvalidOrgName(reg.test(e.target.value));
+  }
 
   return (
 
@@ -183,30 +198,30 @@ const RoleForm = (props) => {
 
     <Grid container sx={{ margin: 2 }}>
         
-        <Grid item xs={3} sx={{ marginTop: 2 }}>
+        <Grid item xs={4} sx={{ marginTop: 2 }}>
         <InputLabel sx={{marginBottom : 1}}>Role Name</InputLabel>
             <TextField
                 variant="outlined"
-                sx={{ width : 130 }}
+                sx={{ width : 180 }}
                 value={roleName}
-                onChange={e=>{
-                  setRoleName(e.target.value)
-              }}
+                onChange={handleRoleName}
+                error={!isvalidRoleName}
               required
             />
+            {!isvalidRoleName && <FormHelperText>Special Characters not allowed</FormHelperText>}
         </Grid>
 
-        <Grid item xs={5} sx={{ marginTop: 2 }}>
+        <Grid item xs={4} sx={{ marginTop: 2 }}>
         <InputLabel sx={{marginBottom : 1}}>Organisation Name</InputLabel>
             <TextField
                 variant="outlined"
                 value={organizationName}
-                onChange={e=>{
-                  setOrganizationName(e.target.value)
-              }}
+                onChange={handleOrgName}
                 required
-                sx={{ width : 225 }}
+                sx={{ width : 180 }}
+                error={!isvalidOrgName}
             />
+            {!isvalidOrgName && <FormHelperText>Special Characters not allowed</FormHelperText>}
         </Grid>
 
         <Grid item xs={4} sx={{ marginTop: 2 }}>
@@ -225,7 +240,7 @@ const RoleForm = (props) => {
           </Grid>
         
 
-        <Grid item xs={3} sx={{ marginTop: 2 }}>
+        <Grid item xs={4} sx={{ marginTop: 2 }}>
         <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
             <Select
                 value={roleState}
@@ -233,7 +248,7 @@ const RoleForm = (props) => {
                   setRoleState(e.target.value)
                 }}
                 variant="outlined"
-                sx={{ width: 130 }}
+                sx={{ width: 180 }}
                 required
                 >
                 <MenuItem value={true}>active</MenuItem>
@@ -241,7 +256,7 @@ const RoleForm = (props) => {
             </Select>
         </Grid>
 
-        <Grid item xs={7} sx={{ marginTop: 2 }}>
+        <Grid item xs={8} sx={{ marginTop: 2 }}>
         <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
             <TextField
                 variant="outlined"
@@ -250,6 +265,7 @@ const RoleForm = (props) => {
                 error={!isvalidId}
                 required
                 disabled={isUpdateState}
+                sx={{ width: 180 }}
             />
             {!isvalidId && <FormHelperText>Please enter valid role ID</FormHelperText>}
         </Grid>

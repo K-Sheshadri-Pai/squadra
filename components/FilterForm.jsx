@@ -80,24 +80,24 @@ const FilterForm = (props) => {
 
             <Grid container sx={{ margin: 2 }}>
                 
-                <Grid item xs={3} sx={{ marginTop: 2 }}>
+                <Grid item xs={4} sx={{ marginTop: 2 }}>
                     <InputLabel sx={{marginBottom : 1}}>Role Name</InputLabel>
                     <TextField
                         variant="outlined"
-                        sx={{ width : 130 }}
+                        sx={{ width : 180 }}
                         value={rname}
                         onChange={(e) => setRname(e.target.value)}
                         
                     />
                 </Grid>
 
-                <Grid item xs={5} sx={{ marginTop: 2 }}>
+                <Grid item xs={4} sx={{ marginTop: 2 }}>
                     <InputLabel sx={{marginBottom : 1}}>Organisation Name</InputLabel>
                     <TextField
                         variant="outlined"
                         value={orgname}
                         onChange={(e) => setOrgname(e.target.value)}
-                        sx={{ width : 225 }}
+                        sx={{ width : 180 }}
                     />
                 </Grid>
 
@@ -118,7 +118,7 @@ const FilterForm = (props) => {
 
                 </Grid>
 
-                <Grid item xs={3} sx={{ marginTop: 2 }}>
+                <Grid item xs={4} sx={{ marginTop: 2 }}>
                     <InputLabel sx={{marginBottom : 1}}>Role State</InputLabel>
                     <Select
                         value={rstate}
@@ -127,19 +127,20 @@ const FilterForm = (props) => {
                         }}
                 
                         variant="outlined"
-                        sx={{ width: 130 }}
+                        sx={{ width: 180 }}
                         >
                         <MenuItem value={true}>active</MenuItem>
                         <MenuItem value= {false}>inactive</MenuItem>
                     </Select>
                 </Grid>
 
-                <Grid item xs={7} sx={{ marginTop : 2 }}>
+                <Grid item xs={8} sx={{ marginTop : 2 }}>
                     <InputLabel sx={{marginBottom : 1}}>Role ID</InputLabel>
                     <TextField
                         variant="outlined"
                         value={rid}
                         onChange={(e) => setRid(e.target.value)}
+                        sx={{ width : 180 }}
                     />
                 </Grid>
 
